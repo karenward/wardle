@@ -17,34 +17,39 @@ function startGame(){
 }
 
 function checkGuess(){
+    //var guessSplit = thisGuess.split("");
+    thisGuess = document.getElementById("myInput").value.toString().toLowerCase();
+    console.log(thisGuess);
     var guessSplit = thisGuess.split("");
-    console.log(`Guess = ${thisGuess} Word = ${word}`)
-    console.log(guessSplit[2] + wordSplit[2])
+    console.log(guessSplit);
+    //console.log(`Guess = ${thisGuess} Word = ${word}`)
+    //console.log(guessSplit[2] + wordSplit[2])
     for(let i = 0; i < 5; i++){
         if(guessSplit[i]==wordSplit[i]){
                result[i] = 1   //correct
-               console.log("correct")
+               //console.log("correct")
            }
-           else if(word.includes(guessSplit[i])){
+           else if(wordSplit.includes(guessSplit[i])){
                result[i] = 2   //present
            }
            else{
                result[i]= 0
            }
-           //document.getElementById(`${guessNumber}-${i}`).innerText=guessSplit[i];
+           document.getElementById(`${guessNumber}-${i}`).innerText=guessSplit[i];
            document.getElementById(`${guessNumber}-${i}`).style.backgroundColor=thisColour[result[i]];
            //console.log(thisColour[result[i]]);           
        } 
        guessNumber++; 
-       if(guessNumber>5){alert(word)}
+       if(guessNumber>5){alert(word.toLowerCase())}
        thisGuess = "";  
        result = [];
 }
 
-window.addEventListener("keydown", function(event) {
+
+/*window.addEventListener("keydown", function(event) {
     const letter = `${event.key}`
-    //console.log(letter)
-    
+    console.log(letter)
+   
     if(thisGuess.length<5){
         thisGuess+=letter
         document.getElementById(`${guessNumber}-${thisGuess.length-1}`).innerText=letter;
@@ -53,4 +58,4 @@ window.addEventListener("keydown", function(event) {
     }
     //document.getElementById(`${guessNumber}-${thisGuess.length-1}`).innerText=letter;
     console.log(thisGuess)
-  }, true);
+  }, true);*/
